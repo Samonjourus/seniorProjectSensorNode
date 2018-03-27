@@ -1,6 +1,6 @@
 //npm packages
 const EXPRESS = require("express")
-const FS = require("fs")
+const FILESYSTEM = require("fs")
 const BODYPARSER = require("body-parser")
 
 var endpoints = require("./endpoints/endpoints.js")
@@ -10,14 +10,15 @@ var port = 80;
 
 webServer.use(BODYPARSER.json())
 webServer.use(BODYPARSER.urlencoded({extended:true}))
-webServer.use(endpoints)
 
 webServer.use(function(req, res, next){
   console.log(req.url + " " + req.method +" | "+JSON.stringify(req.body));
-  FILESYSTEM.appendFile('Server.log', " "+req.ip + " " + new Date() + " " + req.url + " " + req.method +" "+JSON.stringify(req.body) + "\"\n");
+  FILESYSTEM.appendFileSync(__dirname+'\\Server.log',req.ip + " " + new Date() + " " + req.url + " " + req.method +" "+JSON.stringify(req.body) + " ||| " + JSON.stringify(req.query)+"\"\n",{flag:"a"},()=>{});
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, SEARCH, DELETE");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
+webServer.use(endpoints)
 
   if(req.method == "OPTIONS")
     {
