@@ -3,6 +3,7 @@ const EXPRESS = require("express")
 const FS = require("fs")
 const BODYPARSER = require("body-parser")
 
+var endpoints = require("./endpoints/endpoints.js")
 //
 var webServer = EXPRESS();
 var port = 80;
