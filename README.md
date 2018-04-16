@@ -8,3 +8,5 @@ server.log keeps track of:
 * HTTP method used
 * request body
 * request URL parameters
+#toDo
+* gitignore server.log

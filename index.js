@@ -18,7 +18,6 @@ webServer.use(function(req, res, next){
   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, SEARCH, DELETE");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
-webServer.use(endpoints)
 
   if(req.method == "OPTIONS")
     {
@@ -29,6 +28,8 @@ webServer.use(endpoints)
     next();
 });
 
+webServer.use(endpoints)
+webServer.use(EXPRESS.static(__dirname +"\\webpages"))
 webServer.listen(port, function(){
   console.log("webserver running on port " + port);
 })
