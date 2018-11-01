@@ -9,4 +9,3 @@ server.log keeps track of:
 * request body
 * request URL parameters
 # toDo
-* gitignore server.log
