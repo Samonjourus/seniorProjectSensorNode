@@ -3,9 +3,11 @@ import sys
 import os
 
 def main():
-    currentDir = os.path.dirname(os.path.realpath(__file__))+"/../arduinoCode/"
+    rootDir = os.path.dirname(os.path.realpath(__file__))+"/../"
     settings = json.loads(sys.argv[1])
-    code = open(currentDir+"arduinoCode.ino", "w")
+    file = open(rootDir+"equipment.json", "r")
+    equipmentInfo = json.loads(file.read())
+    code = open(rootDir+"arduinoCode/arduinoCode.ino", "w")
     for sensor in settings["sensors"]:
         code.write("int "+sensor["name"]+"value;\n")
     code.write("\nvoid setup()\n{\n\tSerial.begin(9600);\n}\nvoid loop()\n{\n")
@@ -13,7 +15,7 @@ def main():
         code.write("\t"+sensor["name"]+"value = analogRead("+str(sensor["pin"])+");\n")
     code.write("\n")
     for sensor in settings["sensors"]:
-        code.write("\tSerial.println(\"{\\\"name\\\":\\\""+sensor["name"]+"\\\",\\\"value\\\":\"+String("+sensor["name"]+"value)+\"}\");\n")
+        code.write("\tSerial.println(\"{\\\"name\\\":\\\""+equipmentInfo["name"]+"_"+sensor["name"]+"\\\",\\\"value\\\":\"+String("+sensor["name"]+"value)+\"}\");\n")
     #write setup
     #write loop
     code.write("\n}")

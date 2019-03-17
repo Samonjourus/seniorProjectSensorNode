@@ -7,7 +7,6 @@ const BODYPARSER = require("body-parser")
 const PATH = require("path")
 
 var endpoints = require("./endpoints/endpoints.js")
-//
 var webServer = EXPRESS();
 var port = 8080;
 
