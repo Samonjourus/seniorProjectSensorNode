@@ -11,6 +11,8 @@ void loop()
 	loadCellvalue = analogRead(3);
 
 	Serial.println("{\"name\":\"VSU_EnvSens_01_temperatureSensor\",\"value\":"+String(temperatureSensorvalue)+"}");
+
 	Serial.println("{\"name\":\"VSU_EnvSens_01_loadCell\",\"value\":"+String(loadCellvalue)+"}");
 
+	delay(1000);
 }

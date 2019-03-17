@@ -15,10 +15,10 @@ def main():
         code.write("\t"+sensor["name"]+"value = analogRead("+str(sensor["pin"])+");\n")
     code.write("\n")
     for sensor in settings["sensors"]:
-        code.write("\tSerial.println(\"{\\\"name\\\":\\\""+equipmentInfo["name"]+"_"+sensor["name"]+"\\\",\\\"value\\\":\"+String("+sensor["name"]+"value)+\"}\");\n")
+        code.write("\tSerial.println(\"{\\\"name\\\":\\\""+equipmentInfo["name"]+"_"+sensor["name"]+"\\\",\\\"value\\\":\"+String("+sensor["name"]+"value)+\"}\");\n\n")
     #write setup
     #write loop
-    code.write("\n}")
+    code.write("\tdelay(1000);\n}")
     code.close()
 
 main()
