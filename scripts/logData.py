@@ -28,7 +28,7 @@ def sendData(pointInfo):
         print(dataset_ids)
         if pointInfo["name"] not in dataset_ids:
                 data={
-                "timestamp":datetime.datetime.utcnow(),
+                "timestamp":'{0:%Y-%m-%dT%H:%M:%S.%f}'.format(datetime.datetime.utcnow()),
                 "tagName":pointInfo["name"],
                 "qualityCode":192,
                 "value":pointInfo["value"]
@@ -40,7 +40,7 @@ def sendData(pointInfo):
         else:
                 data={
                 "dataSet_id":dataset_ids[pointInfo["tagName"]],
-                "timestamp":datetime.datetime.utcnow(),
+                "timestamp":'{0:%Y-%m-%dT%H:%M:%S.%f}'.format(datetime.datetime.utcnow()),
                 "tagName":pointInfo["name"],
                 "qualityCode":192,
                 "value":pointInfo["value"]
