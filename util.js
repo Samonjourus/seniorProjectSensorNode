@@ -6,7 +6,7 @@ var logger;
 startLogging();
 
 function startLogging(){
-    logger = spawn('python3', ['scripts/logData.py']);
+    logger = spawn('python3', [__dirname+'/scripts/logData.py']);
 
     logger.stdout.on('data', (data) => {
         console.log("'"+data.toString("utf8").trim()+"'");
@@ -33,7 +33,7 @@ async function programArduino(settings){
         }
         else{
             //arduino --upload sketch/sketch.ino --port /dev/ttyUSB*
-            EXEC("/opt/arduino/arduino --upload arduinoCode/arduinoCode.ino --port /dev/ttyUSB0",
+            EXEC("/opt/arduino/arduino --upload "+__dirname+"/arduinoCode/arduinoCode.ino --port /dev/ttyUSB0",
                 function (err, out, stderr) {
             console.log("err: "+err)
             console.log("out: "+out)
@@ -57,7 +57,7 @@ async function programArduino(settings){
 
 async function createSketch(settings){
     return new Promise((resolve, reject)=>{
-        const createArduinoScript = EXEC("python3 scripts/createCode.py '" + JSON.stringify(settings) + "'",
+        const createArduinoScript = EXEC("python3 "+__dirname+"/scripts/createCode.py '" + JSON.stringify(settings) + "'",
           (err, out, stderr)=>{
             if (err) {
                 console.log("1")
