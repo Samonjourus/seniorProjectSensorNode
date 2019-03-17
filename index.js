@@ -1,6 +1,8 @@
+module.exports.URL = "mongodb://localhost:27017"
+
 //npm packages
 const EXPRESS = require("express")
-const FILESYSTEM = require("fs")
+//const FILESYSTEM = require("fs")
 const BODYPARSER = require("body-parser")
 const PATH = require("path")
 
@@ -34,3 +36,4 @@ webServer.use(EXPRESS.static(PATH.join(__dirname,"webpages")))
 webServer.listen(port, function(){
   console.log("webserver running on port " + port);
 })
+
