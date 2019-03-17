@@ -16,7 +16,7 @@ while 1:
 		x=s.read(s.in_waiting)
 		x+=s.readline()
 		x=x.decode("utf-8").split("\r\n")
- [/#[/		for line in x:
+		for line in x:
 			if(line != ""):
 				print(line + "<<")
 	time.sleep(1)

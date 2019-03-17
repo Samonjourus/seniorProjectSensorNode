@@ -13,7 +13,7 @@ def main():
         code.write("\t"+sensor["name"]+"value = analogRead("+str(sensor["pin"])+");\n")
     code.write("\n")
     for sensor in settings["sensors"]:
-        code.write("\tSerial.println("+sensor["name"]+"value);\n")
+        code.write("\tSerial.println(\"{\\\"name\\\":\\\""+sensor["name"]+"\\\",\\\"value\\\":\"+String("+sensor["name"]+"value)+\"}\");\n")
     #write setup
     #write loop
     code.write("\n}")

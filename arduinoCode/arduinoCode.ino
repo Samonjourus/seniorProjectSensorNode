@@ -7,10 +7,9 @@ void setup()
 }
 void loop()
 {
-	temperatureSensorvalue = analogRead(2);
+	temperatureSensorvalue = analogRead(4);
 	loadCellvalue = analogRead(3);
 
-	Serial.println(temperatureSensorvalue);
-	Serial.println(loadCellvalue);
-
+	Serial.println("{\"name\":\"temperatureSensor\",\"value\":"+String(temperatureSensorvalue)+"}");
+	Serial.println("{\"name\":\"loadCell\",\"value\":"+String(loadCellvalue)+"}");
 }
