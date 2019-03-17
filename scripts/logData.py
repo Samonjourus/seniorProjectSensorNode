@@ -16,25 +16,27 @@ def main():
                         pushPoints(temp)
                 time.sleep(.75)
 
-def aggregate(values):
+def pushPoints(values):
         tags = {}
-        for line in x:
+        for line in values.split("\n"):
                 if(line != ""):
+                        print(line)
                         line = json.loads(line)
                         sendData(line)
 
 def sendData(pointInfo):
         print(dataset_ids)
-        if pointInfo["tagName"] not in dataset_ids:
+        if pointInfo["name"] not in dataset_ids:
                 data={
                 "timestamp":datetime.datetime.utcnow(),
                 "tagName":pointInfo["name"],
                 "qualityCode":192,
                 "value":pointInfo["value"]
                 }
-                res = requests.post("http://localhost:8080/api/data/store/point", json=data)
-                response = json.loads(res.text)
-                dataset_ids[pointInfo["tagName"]] = response["dataSet_id"]
+                #res = requests.post("http://localhost:8080/api/data/store/point", json=data)
+                #response = json.loads(res.text)
+                print(data)
+                #dataset_ids[pointInfo["tagName"]] = response["dataSet_id"]
         else:
                 data={
                 "dataSet_id":dataset_ids[pointInfo["tagName"]],
@@ -43,7 +45,8 @@ def sendData(pointInfo):
                 "qualityCode":192,
                 "value":pointInfo["value"]
                 }
-                res = requests.post("http://localhost:8080/api/data/store/point", json=data)
+                #res = requests.post("http://localhost:8080/api/data/store/point", json=data)
+                print(data)
         return
 
 main()
