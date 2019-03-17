@@ -27,6 +27,7 @@ function isObject(item) {
 
 async function programArduino(settings){
     return new Promise(async (resolve,reject)=>{
+        logger.kill();
         let result = await createSketch(settings);
         if(result.code == 3){
             return result;
@@ -46,6 +47,7 @@ async function programArduino(settings){
                 });
             }
             else {
+                startLogging();
                 return resolve ({
                     "code": 0
                 });
