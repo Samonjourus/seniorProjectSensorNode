@@ -7,7 +7,9 @@ Type=simple
 User=pi
 WorkingDirectory=/opt/seniorProjectSensorNode/
 ExecStart=/usr/local/bin/node /opt/seniorProjectSensorNode/index.js
-Restart=on-failure' > sensorNode.service;
+Restart=on-failure
+[Install]
+WantedBy=multi-user.target' > sensorNode.service;
 sudo mv sensorNode.service /etc/systemd/system/;
 sudo systemctl start sensorNode;
 }
