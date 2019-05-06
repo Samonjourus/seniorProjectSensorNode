@@ -19,7 +19,8 @@ function startLogging(){
     });
 
     logger.on('exit', (code) => {
-    console.log(`Child exited with code ${code}`);
+        console.log(`Child exited with code ${code}`);
+        setTimeout(startLogging, 5000)
     return;
     });
 }
