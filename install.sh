@@ -13,7 +13,7 @@ sudo systemctl start sensorNode;
 }
 
 function moveDir(){
-sudo cp "$(dirname "$0")" /opt/
+sudo cp -r "$(dirname "$0")" /opt/
 }
 
 function getNodeFromPi(){
