@@ -1,0 +1,22 @@
+{
+  "name": "tes",
+  "version": "1.0.0",
+  "description": "template express server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "updateDoc": "apidoc -i endpoints/ -o webpages/"
+  },
+  "author": "Benjamin Standfield",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongodb": "^3.1.13"
+  },
+  "apidoc": {
+    "name": "SensorNodeApi",
+    "version": "0.0.1",
+    "description": "API documentation for accessing sesnor node settings",
+    "title": "Sensor Node API"
+  }
+}
