@@ -11,6 +11,7 @@ Restart=on-failure
 [Install]
 WantedBy=multi-user.target' > sensorNode.service;
 sudo mv sensorNode.service /etc/systemd/system/;
+sudo systemctl enable sensorNode;
 sudo systemctl start sensorNode;
 }
 
