@@ -37,3 +37,4 @@ fi
 getNodeFromPi;
 moveDir;
 createService;
+sudo rm /opt/seniorProjectSensorNode/install.sh
