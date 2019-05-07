@@ -40,8 +40,6 @@ def sendData(pointInfo):
                 "qualityCode":192,
                 "value":pointInfo["value"]
                 }
-                print(data)
-                return
                 res = requests.post("http://localhost:8080/api/data/store/point", json=data)
                 response = json.loads(res.text)
 #                print(data)

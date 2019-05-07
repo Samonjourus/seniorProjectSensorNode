@@ -17,6 +17,8 @@ sudo systemctl start sensorNode;
 
 function moveDir(){
 sudo mkdir /opt/seniorProjectSensorNode/
+cd "$(dirname "$0")"
+npm install
 sudo cp -r "$(dirname "$0")" /opt/seniorProjectSensorNode/
 }
 
